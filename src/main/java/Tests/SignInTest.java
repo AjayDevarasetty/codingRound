@@ -1,5 +1,6 @@
 package Tests;
 
+import AllConstants.Constants;
 import ClearTripDetailPages.Home;
 import ClearTripDetailPages.SignIn;
 import com.sun.javafx.PlatformUtil;
@@ -11,11 +12,11 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class SignInTest {
+public class SignInTest extends Home{
 
     private Home homePage;
     private SignIn signInPage;
-    private By errorMessage = By.id(Constants.error_1);
+    private By errorMessage = By.id(Constants.error_l);
 
 
     @BeforeTest
@@ -30,7 +31,7 @@ public class SignInTest {
         homePage.redirect_to_YourTrips();
         homePage.redirect_to_SignInPage();
         signInPage.clickSignIn();
-        WebElement webElement = new WebDriverWait(driver,timeOutInSeconds)).until(ExpectedConditions.presenceOfElementLocated(errorMessage);
+        WebElement webElement = new WebDriverWait(webDriver,5)).until(ExpectedConditions.presenceOfElementLocated(errorMessage);
         assertThat(webElement.getText(),containsString(Constants.signInErrorMessage));
     }
 }

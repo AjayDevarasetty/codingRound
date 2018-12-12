@@ -11,7 +11,10 @@ Flight Booking Page
 Hotel Booking Page
 */
 
+import AllConstants.Constants;
 import com.sun.javafx.PlatformUtil;
+import org.apache.commons.configuration.CompositeConfiguration;
+import org.apache.commons.configuration.SystemConfiguration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,14 +24,13 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import sun.rmi.rmic.Constants;
 
 import java.io.IOException;
 import java.util.HashMap;
 
 public class Home {
 
-    private static WebDriver webDriver;
+    public static WebDriver webDriver;
     private static CompositeConfiguration compositeConfiguration;
     private By tripsLink = By.linkText(Constants.tripsLink);
     private By signInIdLink = By.id(Constants.signInId);
@@ -43,7 +45,7 @@ public class Home {
             compositeConfiguration = new CompositeConfiguration();
             compositeConfiguration.addConfiguration(new SystemConfiguration());
         } catch (org.apache.commons.configuration.ConfigurationException ex) {
-            throw new RuntimeException(ex.getMessage);
+            throw new RuntimeException(ex.getMessage());
         }
     }
 
@@ -74,31 +76,29 @@ public class Home {
         chromeOptions.setExperimentalOption("prefs",preferences);
         chromeOptions.addArguments("--start-maximized");
         chromeOptions.addArguments("disable-extensions");
-
         DesiredCapabilities cap = DesiredCapabilities.chrome();
         cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS,true);
-        cap.setCapability(ChromeOptions.CAPABILITY,options);
-
-        driver = new ChromeDriver(cap);
+        cap.setCapability(ChromeOptions.CAPABILITY,chromeOptions);
+        webDriver = new ChromeDriver(cap);
     }
 
     public void redirect_to_YourTrips(){
-        WebElement webElement = new WebDriverWait(driver,timeOutInSeconds)).until(ExpectedConditions.presenceOfElementLocated(tripsLink));
+        WebElement webElement = new WebDriverWait(webDriver,5)).until(ExpectedConditions.presenceOfElementLocated(tripsLink));
         webElement.click();
     }
 
     public void redirect_to_SignInPage(){
-        WebElement webElement = new WebDriverWait(driver,timeOutInSeconds)).until(ExpectedConditions.presenceOfElementLocated(signInIdLink));
+        WebElement webElement = new WebDriverWait(webDriver,5)).until(ExpectedConditions.presenceOfElementLocated(signInIdLink));
         webElement.click();
     }
 
     public void redirect_to_HotelSearchPage(){
-        WebElement webElement = new WebDriverWait(driver,timeOutInSeconds)).until(ExpectedConditions.presenceOfElementLocated(hotelLinkText));
+        WebElement webElement = new WebDriverWait(webDriver,5)).until(ExpectedConditions.presenceOfElementLocated(hotelLinkText));
         webElement.click();
     }
 
     public void redirect_to_FLightSearchPage(){
-        WebElement webElement = new WebDriverWait(driver,timeOutInSeconds)).until(ExpectedConditions.presenceOfElementLocated(flightLinkText));
+        WebElement webElement = new WebDriverWait(webDriver,5)).until(ExpectedConditions.presenceOfElementLocated(flightLinkText));
         webElement.click();
     }
 }

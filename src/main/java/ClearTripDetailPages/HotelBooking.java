@@ -1,5 +1,6 @@
 package ClearTripDetailPages;
 
+import AllConstants.Constants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,6 +32,6 @@ public class HotelBooking extends Home{
 
 
     public WebElement returnWebElement(By byId){
-        new WebDriverWait(driver,10).until(ExpectedConditions.presenceOfElementLocated(byId));
+        new WebDriverWait(webDriver,10).until(ExpectedConditions.presenceOfElementLocated(byId));
     }
 }
