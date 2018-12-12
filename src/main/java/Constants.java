@@ -1,9 +1,12 @@
+
 public class Constants {
 
-    private static String tripsLink = "Your trips";
-    private static String signInId = "SignIn";
-    private static String hotelsLinkText = "Hotels";
-    private static String flightsLinkText = "Flights";
+    public static String tripsLink = "Your trips";
+    public static String signInId = "SignIn";
+    public static String hotelsLinkText = "Hotels";
+    public static String flightsLinkText = "Flights";
+    public static String search_hotels_button = "SearchHotelsButton";
+    public static String travellers_on_button = "travellersOnhome";
 
 
 }
